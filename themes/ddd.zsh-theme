@@ -3,7 +3,7 @@ local return_code="%(?..%{$bg[red]%}↵%?%{$reset_color%})"
 PROMPT='%{$bg[black]$fg[white]%}[%*]%{$reset_color%}\
 %(!.%{$fg[red]%}#.%{$fg[black]%}>)%{$reset_color%} '
 PROMPT2='%{$fg[red]%}\ %{$reset_color%}'
-RPS1='%{$bg[blue]$fg[white]%}%~$(git_prompt_info)%{$reset_color%}${return_code}'
+RPS1='%{$bg[blue]$fg[white]%}%~%{$bg[red]%}@$(hostname)$(git_prompt_info)%{$reset_color%}${return_code}'
 
 ZSH_THEME_GIT_PROMPT_PREFIX=" %{$reset_color%}%{$bg[yellow]%}["
 ZSH_THEME_GIT_PROMPT_SUFFIX="]%{$reset_color%}"
