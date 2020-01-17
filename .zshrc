@@ -12,7 +12,7 @@ alias tao3D='LANG=C /Users/ddd/Work/tao3D/install/Tao3D.app/Contents/MacOS/Tao3D
 alias sourcetree='/Applications/SourceTree.app/Contents/MacOS/SourceTree'
 
 # My personal utilities live there
-export PATH=$PATH:$HOME/bin
+export PATH=$PATH:$HOME/bin:$HOME/go/bin
 
 # Set name of the theme to load --- if set to "random", it will
 # load a random theme each time oh-my-zsh is loaded, in which case,
