@@ -3,7 +3,7 @@
 
 # Path to your oh-my-zsh installation.
 export ZSH="$HOME/.oh-my-zsh"
-ssh-add -A
+[ `uname` = "Darwin" ] && { ssh-add -A }
 
 # Useful aliases
 alias emax='/Applications/Emacs.app/Contents/MacOS/Emacs &'
