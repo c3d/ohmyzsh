@@ -114,3 +114,10 @@ export EDITOR=emacs
 # - X: Do not reset screen
 # - F: exit if less than one screen
 export LESS=-RXF
+
+# Kubernetes
+alias kc=kubectl
+alias ka=kubeadm
+source <(kubectl completion zsh)
+complete -F __start_kubectl kc
+complete -F __start_kubeadm ka
