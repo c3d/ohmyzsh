@@ -11,6 +11,9 @@ alias tao='LANG=C /Applications/Tao3D\ 1.61.app/Contents/MacOS/Tao3D'
 alias tao3D='LANG=C /Users/ddd/Work/tao3D/install/Tao3D.app/Contents/MacOS/Tao3D'
 alias sourcetree='/Applications/SourceTree.app/Contents/MacOS/SourceTree'
 
+# Path for MacPorts
+export PATH=$PATH:/opt/local/bin
+
 # My personal utilities live there
 export PATH=$PATH:$HOME/bin:$HOME/go/bin
 
