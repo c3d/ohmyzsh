@@ -124,3 +124,5 @@ alias ka=kubeadm
 source <(kubectl completion zsh)
 complete -F __start_kubectl kc
 complete -F __start_kubeadm ka
+
+unsetopt share_history
