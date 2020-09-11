@@ -11,6 +11,12 @@ alias tao='LANG=C /Applications/Tao3D\ 1.61.app/Contents/MacOS/Tao3D'
 alias tao3D='LANG=C /Users/ddd/Work/tao3D/install/Tao3D.app/Contents/MacOS/Tao3D'
 alias sourcetree='/Applications/SourceTree.app/Contents/MacOS/SourceTree'
 
+# BUG WORKAROUNDS
+# Avoiding errors running `make check`, see https://github.com/kata-containers/runtime/issues/2768
+export GOPATH=~/go
+export GOPROXY="https://proxy.golang.org,direct"
+
+
 # Path for MacPorts
 export PATH=$PATH:/opt/local/bin
 
