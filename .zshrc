@@ -133,4 +133,16 @@ complete -F __start_kubeadm ka
 
 unsetopt share_history
 
+# Self-update
+oh_my_zsh_update() {
+    cd ~/.oh-my-zsh
+    git checkout master
+    git pull origin master
+    git push ddd master
+    git checkout ddd
+    git pull ddd ddd
+    git rebase master
+    git push -f ddd ddd
+}
+
 chuck_cow
