@@ -140,7 +140,8 @@ oh_my_zsh_update() {
     git pull origin master
     git push ddd master
     git checkout ddd
-    git pull ddd ddd
+    git fetch ddd
+    git rebase ddd/ddd
     git rebase master
     git push -f ddd ddd
 }
