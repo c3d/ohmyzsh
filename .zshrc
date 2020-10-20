@@ -128,11 +128,16 @@ export EDITOR=emacsclient
 export LESS=-RXF
 
 # Kubernetes
-alias kc=kubectl
-alias ka=kubeadm
-source <(kubectl completion zsh)
-complete -F __start_kubectl kc
-complete -F __start_kubeadm ka
+if which kubectl > /dev/null 2>&1; then
+    alias kc=kubectl
+    source <(kubectl completion zsh)
+    complete -F __start_kubectl kc
+fi
+if which kubeadm > /dev/null 2>&1; then
+    alias ka=kubeadm
+    source <(kubeadm completion zsh)
+    complete -F __start_kubeadm ka
+fi
 
 unsetopt share_history
 
