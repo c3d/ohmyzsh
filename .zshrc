@@ -13,7 +13,7 @@ alias emax='/Applications/Emacs.app/Contents/MacOS/Emacs &'
 alias tao='LANG=C /Applications/Tao3D\ 1.61.app/Contents/MacOS/Tao3D'
 alias tao3D='LANG=C /Users/ddd/Work/tao3D/install/Tao3D.app/Contents/MacOS/Tao3D'
 alias sourcetree='/Applications/SourceTree.app/Contents/MacOS/SourceTree'
-alias fedora='kinit ddd@FEDORAPROJECT.ORG; eval `ssh-agent`; ssh-add ~/.ssh/freedesktop'
+alias fedora='kinit ddd@FEDORAPROJECT.ORG; eval `ssh-agent`; ssh-add ~/.ssh/freedesktop; ssh-add'
 
 # BUG WORKAROUNDS
 # Avoiding errors running `make check`, see https://github.com/kata-containers/runtime/issues/2768
