@@ -9,7 +9,7 @@ export ZSH="$HOME/.oh-my-zsh"
 [ `uname` = "Darwin" ] && { ssh-add -A }
 
 # Useful aliases
-alias emax='/Applications/Emacs.app/Contents/MacOS/Emacs &'
+alias emax='/Applications/MacPorts/Emacs.app/Contents/MacOS/Emacs &'
 alias tao='LANG=C /Applications/Tao3D\ 1.61.app/Contents/MacOS/Tao3D'
 alias tao3D='LANG=C /Users/ddd/Work/tao3D/install/Tao3D.app/Contents/MacOS/Tao3D'
 alias sourcetree='/Applications/SourceTree.app/Contents/MacOS/SourceTree'
