@@ -27,6 +27,9 @@ export PATH=$PATH:/opt/local/bin
 # My personal utilities live there
 export PATH=$PATH:$HOME/bin:$HOME/go/bin
 
+# Path for LLVM
+export PATH=$PATH:/usr/local/Cellar/llvm/11.0.0/bin
+
 # Set name of the theme to load --- if set to "random", it will
 # load a random theme each time oh-my-zsh is loaded, in which case,
 # to know which specific one was loaded, run: echo $RANDOM_THEME
