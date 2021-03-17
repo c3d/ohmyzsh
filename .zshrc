@@ -142,6 +142,10 @@ if which kubeadm > /dev/null 2>&1; then
     source <(kubeadm completion zsh)
     complete -F __start_kubeadm ka
 fi
+if which oc > /dev/null 2>&1; then
+    source <(oc completion zsh)
+    complete -F __start_oc
+fi
 
 unsetopt share_history
 
