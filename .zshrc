@@ -134,18 +134,18 @@ export LESS=-RXF
 # Kubernetes
 if which kubectl > /dev/null 2>&1; then
     alias kc=kubectl
-    source <(kubectl completion zsh)
-    complete -F __start_kubectl kc
 fi
 if which kubeadm > /dev/null 2>&1; then
     alias ka=kubeadm
-    source <(kubeadm completion zsh)
-    complete -F __start_kubeadm ka
 fi
-if which oc > /dev/null 2>&1; then
-    source <(oc completion zsh)
-    complete -F __start_oc
-fi
+
+alias completions="                     \
+    source <(oc completion zsh);        \
+    source <(kubectl completion zsh);   \
+    complete -F __start_kubectl kc;     \
+    source <(kubeadm completion zsh);   \
+    complete -F __start_kubeadm ka;     \
+    complete -F __start_oc"
 
 unsetopt share_history
 
