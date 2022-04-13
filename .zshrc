@@ -131,6 +131,9 @@ export EDITOR=emacsclient
 # - F: exit if less than one screen
 export LESS=-RXF
 
+# Avoid "zsh: no matches found" on things like 'rsync big:foo*`
+unsetopt nomatch
+
 # Kubernetes
 if which kubectl > /dev/null 2>&1; then
     alias kc=kubectl
