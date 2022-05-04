@@ -15,6 +15,9 @@ else
     echo "**** Using existing ssh agent ****"
 fi
 
+# Do not quit on EOF
+set -o ignoreeof
+
 # Useful aliases
 alias emax='/Applications/Emacs.app/Contents/MacOS/Emacs &'
 alias tao='LANG=C /Applications/Tao3D\ 1.61.app/Contents/MacOS/Tao3D'
