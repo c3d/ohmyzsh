@@ -15,6 +15,9 @@ else
     echo "**** Using existing ssh agent ****"
 fi
 
+# Path for homebrew
+[ -f "/opt/homebrew/bin/brew" ] && eval "$(/opt/homebrew/bin/brew shellenv)"
+
 # Do not quit on EOF
 set -o ignoreeof
 
