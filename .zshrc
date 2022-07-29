@@ -8,6 +8,7 @@
 export ZSH="$HOME/.oh-my-zsh"
 if [ `uname` = "Darwin" ]; then
    ssh-add --apple-load-keychain
+   alias kerb='kinit -t ~/.kerberos.username.keytab -k cdupontd@REDHAT.COM'
 elif [ -z "$SSH_AUTH_SOCK" ]; then
     eval `ssh-agent`
     ssh-add
