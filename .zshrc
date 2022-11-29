@@ -44,6 +44,9 @@ export PATH=$PATH:$HOME/bin:$HOME/go/bin
 # Path for LLVM
 export PATH=$PATH:/usr/local/Cellar/llvm/11.1.0/bin:/usr/local/Cellar/llvm/12.0.0_1/bin
 
+# Path for rustup
+source "$HOME/.cargo/env"
+
 # Set name of the theme to load --- if set to "random", it will
 # load a random theme each time oh-my-zsh is loaded, in which case,
 # to know which specific one was loaded, run: echo $RANDOM_THEME
