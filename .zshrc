@@ -111,7 +111,11 @@ COMPLETION_WAITING_DOTS="true"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git github z web-search common-aliases dnf brew macos chucknorris)
+if [ `uname` = "Darwin" ]; then
+    plugins=(git github z web-search common-aliases dnf chucknorris brew macos)
+else
+    plugins=(git github z web-search common-aliases dnf chucknorris)
+fi
 
 source $ZSH/oh-my-zsh.sh
 
