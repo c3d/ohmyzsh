@@ -34,6 +34,10 @@ alias fedora='kinit ddd@FEDORAPROJECT.ORG; eval `ssh-agent`; ssh-add ~/.ssh/free
 export GOPATH=~/go
 export GOPROXY="https://proxy.golang.org,direct"
 
+# Mail database
+if [ -d "/Volumes/FourTea" ]; then
+    export MUHOME=/Volumes/FourTea/mu
+fi
 
 # Path for MacPorts
 export PATH=$PATH:/opt/local/bin
