@@ -40,7 +40,7 @@ if [ -d "/Volumes/FourTea" ]; then
 fi
 
 # Path for MacPorts
-export PATH=$PATH:/opt/local/bin
+export PATH=$PATH:/opt/local/bin:~/.local/bin
 
 # My personal utilities live there
 export PATH=$PATH:$HOME/bin:$HOME/go/bin
