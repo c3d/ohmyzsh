@@ -177,8 +177,6 @@ alias completions="                     \
     complete -F __start_kubeadm ka;     \
     complete -F __start_oc"
 
-unsetopt share_history
-
 chuck_cow
 echo "--------------------------------------------------------------------------------"
 fortune
