@@ -1,8 +1,15 @@
 # If you come from bash you might have to change your $PATH.
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
-# Emacs tramp access - Do not load all the extra stuff
-# [[ $TERM == "dumb" ]] && unsetopt zle && PS1='$ ' && return
+# Skip fancy initialization for TRAMP connections only
+env
+if [[ "$TERM" == "dumb" && -z "$INSIDE_EMACS" ]]; then
+    unsetopt zle
+    unsetopt prompt_cr
+    unsetopt prompt_subst
+    PS1='$ '
+    return
+fi
 
 # Path to your oh-my-zsh installation.
 export ZSH="$HOME/.oh-my-zsh"
