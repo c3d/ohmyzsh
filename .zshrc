@@ -2,7 +2,6 @@
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
 # Skip fancy initialization for TRAMP connections only
-env
 if [[ "$TERM" == "dumb" && -z "$INSIDE_EMACS" ]]; then
     unsetopt zle
     unsetopt prompt_cr
