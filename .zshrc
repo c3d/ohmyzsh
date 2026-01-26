@@ -36,6 +36,7 @@ alias sourcetree='/Applications/SourceTree.app/Contents/MacOS/SourceTree'
 alias fedora='kinit ddd@FEDORAPROJECT.ORG; eval `ssh-agent`; ssh-add ~/.ssh/freedesktop; ssh-add'
 alias db48x='~/Work/calc/db48x/sim/db48x.app/Contents/MacOS/db48x'
 alias db50x='~/Work/calc/db48x/sim/db50x.app/Contents/MacOS/db50x'
+alias hermeto='podman run --rm -ti -v "$PWD:$PWD:z" -w "$PWD" ghcr.io/hermetoproject/hermeto:latest'
 
 # BUG WORKAROUNDS
 # Avoiding errors running `make check`, see https://github.com/kata-containers/runtime/issues/2768
