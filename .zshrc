@@ -1,3 +1,11 @@
+# Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
+# Initialization code that may require console input (password prompts, [y/n]
+# confirmations, etc.) must go above this block; everything else may go below.
+if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
+    source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
+fi
+typeset -g POWERLEVEL10K_INSTANT_PROMPT=quiet
+
 # If you come from bash you might have to change your $PATH.
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
@@ -12,6 +20,8 @@ fi
 
 # Path to your oh-my-zsh installation.
 export ZSH="$HOME/.oh-my-zsh"
+
+# SSH agent / key
 if [ `uname` = "Darwin" ]; then
    /usr/bin/ssh-add --apple-load-keychain
    alias kerb='kinit -t ~/.kerberos.username.keytab -k cdupontd@REDHAT.COM'
@@ -52,7 +62,10 @@ fi
 export PATH=$PATH:/opt/local/bin:~/.local/bin
 
 # My personal utilities live there
-export PATH=$PATH:$HOME/bin:$HOME/go/bin
+export PATH=$PATH:$HOME/bin
+
+# Path for MacPorts, Omarchy, Go
+export PATH=$PATH:/opt/local/bin:~/.local/bin:$HOME/go/bin
 
 # Path for LLVM
 export PATH=$PATH:/usr/local/Cellar/llvm/11.1.0/bin:/usr/local/Cellar/llvm/12.0.0_1/bin
@@ -62,11 +75,16 @@ if [ -f "$HOME/.cargo/env" ]; then
     source "$HOME/.cargo/env"
 fi
 
+# Path for wasmedge
+if [ -f ".wasmedge/env" ]; then
+    . ".wasmedge/env"
+fi
+
 # Set name of the theme to load --- if set to "random", it will
 # load a random theme each time oh-my-zsh is loaded, in which case,
 # to know which specific one was loaded, run: echo $RANDOM_THEME
 # See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
-ZSH_THEME="ddd"
+ZSH_THEME="powerlevel10k/powerlevel10k"
 
 # Set list of themes to pick from when loading at random
 # Setting this variable when ZSH_THEME=random will cause zsh to load
@@ -79,7 +97,7 @@ ZSH_THEME="ddd"
 
 # Uncomment the following line to use hyphen-insensitive completion.
 # Case-sensitive completion must be off. _ and - will be interchangeable.
-# HYPHEN_INSENSITIVE="true"
+HYPHEN_INSENSITIVE="true"
 
 # Uncomment the following line to disable bi-weekly auto-update checks.
 # DISABLE_AUTO_UPDATE="true"
@@ -127,9 +145,9 @@ COMPLETION_WAITING_DOTS="true"
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
 if [ `uname` = "Darwin" ]; then
-    plugins=(git github z web-search common-aliases dnf chucknorris brew macos)
+    plugins=(git github z web-search common-aliases chucknorris brew macos)
 else
-    plugins=(git github z web-search common-aliases dnf chucknorris)
+    plugins=(git github z web-search common-aliases chucknorris dnf)
 fi
 
 source $ZSH/oh-my-zsh.sh
@@ -170,27 +188,32 @@ export LESS=-RXF
 # Avoid "zsh: no matches found" on things like 'rsync big:foo*`
 unsetopt nomatch
 
-# Kubernetes
-if which kubectl > /dev/null 2>&1; then
+# Kubernetes completions
+# These used to be in an alias before they are slow to load
+# Powershell10k instant start makes the optimization less necessary,
+# so load the completions if the commands exist
+if which kubectl > /dev/null 2>&1 ; then
     alias kc=kubectl
+    source <(kubectl completion zsh)
+    complete -F __start_kubectl kc
 fi
-if which kubeadm > /dev/null 2>&1; then
+if which kubeadm > /dev/null 2>&1 ; then
     alias ka=kubeadm
+    source <(kubeadm completion zsh)
+    complete -F __start_kubeadm ka
+fi
+if which oc > /dev/null 2>&1; then
+    source <(oc completion zsh)
 fi
 
-alias completions="                     \
-    source <(oc completion zsh);        \
-    source <(kubectl completion zsh);   \
-    complete -F __start_kubectl kc;     \
-    source <(kubeadm completion zsh);   \
-    complete -F __start_kubeadm ka;     \
-    complete -F __start_oc"
 
 chuck_cow
 echo "--------------------------------------------------------------------------------"
 fortune
 echo "--------------------------------------------------------------------------------"
 
-if [ -f ".wasmedge/env" ]; then
-    . ".wasmedge/env"
-fi
+# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
+[[ -f ~/.p10k.zsh ]] && source ~/.p10k.zsh
+
+ZSH_SYNTAX_HIGHLIGHTING=~/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+[[ -f $ZSH_SYNTAX_HIGHLIGHTING ]] && source $ZSH_SYNTAX_HIGHLIGHTING
