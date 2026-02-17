@@ -68,7 +68,9 @@ export PATH=$PATH:$HOME/bin
 export PATH=$PATH:/opt/local/bin:~/.local/bin:$HOME/go/bin
 
 # Path for LLVM
-export PATH=$PATH:/usr/local/Cellar/llvm/11.1.0/bin:/usr/local/Cellar/llvm/12.0.0_1/bin
+if [ -x "$(command -v brew)" ]; then
+    export PATH=$PATH:$(brew --prefix llvm)/bin
+fi
 
 # Path for rustup
 if [ -f "$HOME/.cargo/env" ]; then
