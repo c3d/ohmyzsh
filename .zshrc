@@ -1,3 +1,8 @@
+# Preserve X11 forwarding env (set by sshd with ssh -X). Some setups clear these during
+# shell init; restoring at the end fixes "Can't open display" when using X over SSH.
+[[ -n "$DISPLAY" ]] && typeset -gx _OMZ_X11_DISPLAY="$DISPLAY"
+[[ -n "$XAUTHORITY" ]] && typeset -gx _OMZ_X11_XAUTHORITY="$XAUTHORITY"
+
 # Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
 # Initialization code that may require console input (password prompts, [y/n]
 # confirmations, etc.) must go above this block; everything else may go below.
@@ -219,3 +224,10 @@ echo "--------------------------------------------------------------------------
 
 ZSH_SYNTAX_HIGHLIGHTING=~/.oh-my-zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 [[ -f $ZSH_SYNTAX_HIGHLIGHTING ]] && source $ZSH_SYNTAX_HIGHLIGHTING
+
+# Restore X11 forwarding env if accidentally cleared during shell init (e.g. by instant prompt)
+if [[ -n "${SSH_CONNECTION:-$SSH_CLIENT}" && -z "${DISPLAY:-}" && -n "${_OMZ_X11_DISPLAY:-}" ]]; then
+  export DISPLAY="$_OMZ_X11_DISPLAY"
+  [[ -n "${_OMZ_X11_XAUTHORITY:-}" ]] && export XAUTHORITY="$_OMZ_X11_XAUTHORITY"
+fi
+unset _OMZ_X11_DISPLAY _OMZ_X11_XAUTHORITY 2>/dev/null
