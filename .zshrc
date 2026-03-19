@@ -49,8 +49,8 @@ alias tao='LANG=C /Applications/Tao3D\ 1.61.app/Contents/MacOS/Tao3D'
 alias tao3D='LANG=C /Users/ddd/Work/tao3D/install/Tao3D.app/Contents/MacOS/Tao3D'
 alias sourcetree='/Applications/SourceTree.app/Contents/MacOS/SourceTree'
 alias fedora='kinit ddd@FEDORAPROJECT.ORG; eval `ssh-agent`; ssh-add ~/.ssh/freedesktop; ssh-add'
-alias db48x='~/Work/calc/db48x/sim/db48x.app/Contents/MacOS/db48x'
-alias db50x='~/Work/calc/db48x/sim/db50x.app/Contents/MacOS/db50x'
+alias db48x='~/Work/calc/db48x/db48x.app/Contents/MacOS/db48x'
+alias db50x='~/Work/calc/db48x/db50x.app/Contents/MacOS/db50x'
 alias hermeto='podman run --rm -ti -v "$PWD:$PWD:z" -w "$PWD" ghcr.io/hermetoproject/hermeto:latest'
 
 # BUG WORKAROUNDS
