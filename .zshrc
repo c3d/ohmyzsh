@@ -159,6 +159,9 @@ fi
 
 source $ZSH/oh-my-zsh.sh
 
+# Do not merge history live across terminals (Oh My Zsh enables share_history by default).
+unsetopt share_history
+
 # User configuration
 
 # export MANPATH="/usr/local/man:$MANPATH"
