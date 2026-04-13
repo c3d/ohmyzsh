@@ -74,7 +74,9 @@ export PATH=$PATH:/opt/local/bin:~/.local/bin:$HOME/go/bin
 
 # Path for LLVM
 if [ -x "$(command -v brew)" ]; then
-    export PATH=$PATH:$(brew --prefix llvm)/bin
+    if echo "$(command -v brew)" | grep -q homebrew; then
+        export PATH=$PATH:$(brew --prefix llvm)/bin
+    fi
 fi
 
 # Path for rustup
