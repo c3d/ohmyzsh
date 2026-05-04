@@ -1,7 +1,15 @@
 # Preserve X11 forwarding env (set by sshd with ssh -X). Some setups clear these during
 # shell init; restoring at the end fixes "Can't open display" when using X over SSH.
-[[ -n "$DISPLAY" ]] && typeset -gx _OMZ_X11_DISPLAY="$DISPLAY"
-[[ -n "$XAUTHORITY" ]] && typeset -gx _OMZ_X11_XAUTHORITY="$XAUTHORITY"
+if [[ -n "$DISPLAY" ]]; then
+    typeset -gx _OMZ_X11_DISPLAY="$DISPLAY"
+    if [[ "$DISPLAY" != ":0" ]]; then
+        export GDK_BACKEND=x11
+        alias emacs=emacs-gtk+x11
+    fi
+fi
+if [[ -n "$XAUTHORITY" ]]; then
+    typeset -gx _OMZ_X11_XAUTHORITY="$XAUTHORITY"
+fi
 
 # Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
 # Initialization code that may require console input (password prompts, [y/n]
