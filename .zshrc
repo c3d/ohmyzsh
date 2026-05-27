@@ -244,3 +244,16 @@ if [[ -n "${SSH_CONNECTION:-$SSH_CLIENT}" && -z "${DISPLAY:-}" && -n "${_OMZ_X11
   [[ -n "${_OMZ_X11_XAUTHORITY:-}" ]] && export XAUTHORITY="$_OMZ_X11_XAUTHORITY"
 fi
 unset _OMZ_X11_DISPLAY _OMZ_X11_XAUTHORITY 2>/dev/null
+
+# -----------------------------------------------------------------------------
+#   Setup Google Cloud
+# -----------------------------------------------------------------------------
+
+# The next line updates PATH for the Google Cloud SDK.
+if [ -f $HOME/Work/google-cloud-sdk/path.zsh.inc ]; then . $HOME/Work/google-cloud-sdk/path.zsh.inc; fi
+
+# The next line enables shell command completion for gcloud.
+if [ -f $HOME/Work/google-cloud-sdk/completion.zsh.inc ]; then . $HOME/Work/google-cloud-sdk/completion.zsh.inc; fi
+
+# Select Claud setup
+if [ -f $HOME/.ddd-claude-env ]; then . $HOME/.ddd-claude-env; fi
