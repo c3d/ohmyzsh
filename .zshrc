@@ -257,3 +257,9 @@ if [ -f $HOME/Work/google-cloud-sdk/completion.zsh.inc ]; then . $HOME/Work/goog
 
 # Select Claud setup
 if [ -f $HOME/.ddd-claude-env ]; then . $HOME/.ddd-claude-env; fi
+
+# >>> grok installer >>>
+export PATH="$HOME/.grok/bin:$PATH"
+fpath=(~/.grok/completions/zsh $fpath)
+autoload -Uz compinit && compinit -C
+# <<< grok installer <<<
