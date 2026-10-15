@@ -80,6 +80,9 @@ export PATH=$PATH:$HOME/bin
 # Path for MacPorts, Omarchy, Go
 export PATH=$PATH:/opt/local/bin:~/.local/bin:$HOME/go/bin
 
+# Path for OSC scripts
+export PATH=$PATH:$HOME/Work/osc/scripts/bin
+
 # Path for LLVM
 if [ -x "$(command -v brew)" ]; then
     if echo "$(command -v brew)" | grep -q homebrew; then
@@ -225,6 +228,10 @@ fi
 if which oc > /dev/null 2>&1; then
     source <(oc completion zsh)
 fi
+if which hypershift-cluster-setup > /dev/null 2>&1 ; then
+    source <(hypershift-cluster-setup completion zsh)
+fi
+
 
 
 chuck_cow
